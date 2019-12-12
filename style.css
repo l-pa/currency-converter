@@ -65,8 +65,19 @@ input {
   min-width: 0;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+/* width
+::-webkit-scrollbar {
+  width: 50px;
+}
+ */
+
 #graph {
-  width: 70vw;
+  width: 45vw;
 }
 .row {
   display: flex;

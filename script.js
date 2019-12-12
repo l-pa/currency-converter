@@ -240,7 +240,8 @@ window.addEventListener("load", function() {
 specificDateInput.addEventListener("change", function(val) {
   getExchangeRates(
     new Date(document.getElementById("dateInput").value),
-    selectA.options[selectA.selectedIndex].getAttribute("base")
+    selectA.options[selectA.selectedIndex].getAttribute("base"),
+    false
   ).then(res => {
     selectB.selectedIndex = currentBIndex;
     selectA.selectedIndex = currentAIndex;
