@@ -55,7 +55,7 @@ function formatDate(date) {
   return [year, month, day].join("-");
 }
 
-let getExchangeRates = function(date, base = "HKD") {
+let getExchangeRates = function(date, base = "HKD", changeGraph = true) {
   console.log(base);
 
   return new Promise(function(resolve, reject) {
@@ -135,7 +135,9 @@ let getExchangeRates = function(date, base = "HKD") {
           let element = document.getElementById("rates");
           element.appendChild(div);
         });
-        getExhangeDateRange();
+        if (changeGraph) {
+          getExhangeDateRange();
+        }
         selectB.selectedIndex = currentBIndex;
         selectA.selectedIndex = currentAIndex;
         calc();
@@ -174,6 +176,8 @@ let getExhangeDateRange = function() {
     )
       .then(res => res.json())
       .then(res => {
+        console.log(res);
+
         let tmp = 0;
         let graphData = [];
         let labels = [];
@@ -247,7 +251,7 @@ specificDateInput.addEventListener("change", function(val) {
 document
   .getElementById("latestButton")
   .addEventListener("click", function(val) {
-    getExchangeRates(null, baseA);
+    getExchangeRates(null, baseA, false);
     specificDateInput.valueAsDate = new Date();
   });
 
