@@ -7,13 +7,9 @@ var myChart = new Chart(ctx, {
       {
         label: "",
         data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)'
-      ],
-      borderColor: [
-          'rgba(255, 99, 132, 1)'
-      ],
-      borderWidth: 3
+        backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+        borderColor: ["rgba(255, 99, 132, 1)"],
+        borderWidth: 3
       }
     ]
   },
@@ -21,7 +17,6 @@ var myChart = new Chart(ctx, {
     scales: {
       xAxes: [
         {
-          
           type: "time",
           distribution: "linear",
           bounds: "ticks",
@@ -30,14 +25,12 @@ var myChart = new Chart(ctx, {
           },
           ticks: {
             callback: function(tick, index, array) {
-                return (index % 10) ? "" : tick;
+              return index % 10 ? "" : tick;
             }
-        }
+          }
         }
       ],
-      yAxes: [
-
-      ]
+      yAxes: []
     }
   }
 });

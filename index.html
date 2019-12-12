@@ -43,7 +43,7 @@
         <div id="topBar">
           <h3 id="base"></h3>
           <div id="dateDiv">
-            <h3 id="date"></h3>
+            <!-- <h3 id="date"></h3> -->
             <input type="date" name="cd" id="dateInput" />
           </div>
           <button id="latestButton">Latest</button>
@@ -52,21 +52,38 @@
         <div id="first">
           <div id="calc">
             <div id="calcInput">
-              <h3>Base</h3>
-              <input id="iA" type="number" min="0" step="0.01" />
-              <select id="selectA"> </select>
-              <br />
+              <div class="base input">
+                <h3>Base</h3>
+                <select id="selectA"> </select>
+                <input
+                  id="iA"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  class="calcInput"
+                />
+              </div>
               <!-- switchButton -->
-              <h3>Destination</h3>
-              <input id="iB" type="number" min="0" step="0.01" />
-              <select id="selectB"> </select>
+              <div class="destination input">
+                <h3>Destination</h3>
+                <select id="selectB"> </select>
+                <input
+                  id="iB"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  class="calcInput"
+                />
+              </div>
             </div>
           </div>
         </div>
-        <input type="text" name="daterange" id="daterange" />
-        <button id="oY">year</button>
-        <button id="oW">week</button>
-        <button id="oD">day</button>
+        <div class="graphControl">
+          <input type="text" name="daterange" id="daterange" />
+          <button id="oY">year</button>
+          <button id="oW">week</button>
+          <button id="oD">day</button>
+        </div>
 
         <div id="graph">
           <canvas id="myChart"></canvas>

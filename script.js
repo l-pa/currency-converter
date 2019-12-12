@@ -17,7 +17,7 @@ const latestDate = "https://api.exchangeratesapi.io/latest";
 const prevValues = document.getElementById("rates");
 let baseA = "CAD";
 const precision = 5;
-let currentAIndex = 0;
+let currentAIndex = 1;
 let currentBIndex = 0;
 
 let currencyNames = {};
@@ -55,21 +55,22 @@ function formatDate(date) {
   return [year, month, day].join("-");
 }
 
-let getExchangeRates = function(date, base = "CAD") {
+let getExchangeRates = function(date, base = "HKD") {
   console.log(base);
 
   return new Promise(function(resolve, reject) {
     prevValues.innerHTML = "";
     baseA = base;
-    if (date) {
-      document.getElementById("date").innerHTML = date.toLocaleDateString(
-        navigator.language
-      );
-    } else {
-      document.getElementById("date").innerHTML = new Date().toLocaleDateString(
-        navigator.language
-      );
-    }
+    // if (date) {
+    //   document.getElementById("date").innerHTML = date.toLocaleDateString(
+    //     navigator.language
+    //   );
+    // }
+    // } else {
+    //   document.getElementById("date").innerHTML = new Date().toLocaleDateString(
+    //     navigator.language
+    //   );
+    // }
 
     let url = date
       ? specificDate +
@@ -135,10 +136,14 @@ let getExchangeRates = function(date, base = "CAD") {
           element.appendChild(div);
         });
         getExhangeDateRange();
+        selectB.selectedIndex = currentBIndex;
+        selectA.selectedIndex = currentAIndex;
+        calc();
         resolve("ok");
       });
 
     let x = 1;
+
     inputA.addEventListener("input", newValue => {
       inputB.value = (
         Number.parseFloat(newValue.target.value) *
@@ -188,7 +193,6 @@ let getExhangeDateRange = function() {
           if (keyA > keyB) return 1;
           return 0;
         });
-        console.log(arrayOfObj);
 
         arrayOfObj.forEach(element => {
           graphData.push({
@@ -215,7 +219,8 @@ window.addEventListener("load", function() {
   specificDateInput.min = formatDate(
     new Date(new Date().setFullYear(new Date().getFullYear() - 1))
   );
-  specificDate.valueAsDate = new Date();
+
+  specificDateInput.valueAsDate = new Date();
 
   console.log("document loaded");
   fetch("https://openexchangerates.org/api/currencies.json")
@@ -227,6 +232,7 @@ window.addEventListener("load", function() {
       getExchangeRates();
     });
 });
+
 specificDateInput.addEventListener("change", function(val) {
   getExchangeRates(
     new Date(document.getElementById("dateInput").value),
@@ -237,11 +243,12 @@ specificDateInput.addEventListener("change", function(val) {
     calc();
   });
 });
+
 document
   .getElementById("latestButton")
   .addEventListener("click", function(val) {
-    getExchangeRates();
-    specificDateInput.value = new Date();
+    getExchangeRates(null, baseA);
+    specificDateInput.valueAsDate = new Date();
   });
 
 document.getElementById("selectA").addEventListener("change", e => {
@@ -260,6 +267,7 @@ document.getElementById("selectA").addEventListener("change", e => {
       selectB.selectedIndex = currentBIndex;
       selectA.selectedIndex = selectA.length - 1;
       calc();
+      getExhangeDateRange(startDate, endDate);
     });
   } else {
     getExchangeRates(
@@ -270,6 +278,7 @@ document.getElementById("selectA").addEventListener("change", e => {
       selectB.selectedIndex = currentBIndex;
       selectA.selectedIndex = currentAIndex;
       calc();
+      getExhangeDateRange(startDate, endDate);
     });
   }
 });
