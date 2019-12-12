@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+  </head>
+
+  <body>
+    <div class="app">
+      <div id="rates"></div>
+      <div id="app">
+        <h1 class="title">Currency converter</h1>
+        <div id="topBar">
+          <h3 id="base"></h3>
+          <div id="dateDiv">
+            <h3 id="date"></h3>
+            <input type="date" name="cd" id="dateInput" />
+          </div>
+          <button id="latestButton">Latest</button>
+        </div>
+
+        <div id="first">
+          <div id="calc">
+            <div id="calcInput">
+              <h3>Base</h3>
+              <input id="iA" type="number" min="0" step="0.01" />
+              <select id="selectA"> </select>
+              <br />
+              <!-- switchButton -->
+              <h3>Destination</h3>
+              <input id="iB" type="number" min="0" step="0.01" />
+              <select id="selectB"> </select>
+            </div>
+          </div>
+        </div>
+        <input type="text" name="daterange" id="daterange" />
+        <button id="oY">year</button>
+        <button id="oW">week</button>
+        <button id="oD">day</button>
+
+        <div id="graph">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <script src="graph.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
