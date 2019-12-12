@@ -25,7 +25,7 @@ var myChart = new Chart(ctx, {
           },
           ticks: {
             callback: function(tick, index, array) {
-              return index % 10 ? "" : tick;
+              return index % 4 ? "" : tick;
             }
           }
         }

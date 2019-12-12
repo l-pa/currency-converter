@@ -313,6 +313,43 @@ document.getElementById("selectB").addEventListener("change", e => {
 //   });
 // });
 
+oneY.addEventListener("click", function() {
+  $("#daterange")
+    .data("daterangepicker")
+    .setEndDate(new Date());
+  $("#daterange")
+    .data("daterangepicker")
+    .setStartDate(
+      new Date(new Date().setFullYear(new Date().getFullYear() - 1))
+    );
+  startDate = $("#daterange")
+    .data("daterangepicker")
+    .startDate.format("YYYY-MM-DD");
+
+  endDate = $("#daterange")
+    .data("daterangepicker")
+    .endDate.format("YYYY-MM-DD");
+  getExhangeDateRange();
+});
+
+oneW.addEventListener("click", function() {
+  $("#daterange")
+    .data("daterangepicker")
+    .setEndDate(new Date());
+  $("#daterange")
+    .data("daterangepicker")
+    .setStartDate(new Date(new Date().addDays(-7)));
+
+  startDate = $("#daterange")
+    .data("daterangepicker")
+    .startDate.format("YYYY-MM-DD");
+
+  endDate = $("#daterange")
+    .data("daterangepicker")
+    .endDate.format("YYYY-MM-DD");
+  getExhangeDateRange();
+});
+
 $(function() {
   const minDate = new Date("2000-01-01T01:01:00");
   console.log(window.navigator.userLanguage || window.navigator.language);
@@ -320,8 +357,8 @@ $(function() {
   $('input[name="daterange"]').daterangepicker(
     {
       opens: "center",
-      startDate: endDate,
-      endDate: startDate
+      startDate: startDate,
+      endDate: endDate
     },
     function(start, end, label) {
       startDate = start.toDate();
